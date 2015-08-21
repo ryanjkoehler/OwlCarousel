@@ -565,7 +565,7 @@ if (typeof Object.create !== "function") {
                     return false;
                 }
             }
-            base.goTo(base.currentItem, speed);
+            return base.goTo(base.currentItem, speed);
         },
 
         prev : function (speed) {
@@ -589,7 +589,7 @@ if (typeof Object.create !== "function") {
                     return false;
                 }
             }
-            base.goTo(base.currentItem, speed);
+            return base.goTo(base.currentItem, speed);
         },
 
         goTo : function (position, speed, drag) {
@@ -653,7 +653,7 @@ if (typeof Object.create !== "function") {
                     base.css2slide(goToPixel, base.options.slideSpeed);
                 }
             }
-            base.afterGo();
+            return base.afterGo();
         },
 
         jumpTo : function (position) {
@@ -673,7 +673,7 @@ if (typeof Object.create !== "function") {
                 base.css2slide(base.positionsInArray[position], 1);
             }
             base.currentItem = base.owl.currentItem = position;
-            base.afterGo();
+            return base.afterGo();
         },
 
         afterGo : function () {
@@ -695,6 +695,8 @@ if (typeof Object.create !== "function") {
             if (typeof base.options.afterMove === "function" && base.prevItem !== base.currentItem) {
                 base.options.afterMove.apply(this, [base.$elem]);
             }
+
+			return base.currentItem;
         },
 
         stop : function () {
